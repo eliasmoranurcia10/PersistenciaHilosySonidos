@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/margen"
         android:layout_marginRight="@dimen/margen"
         android:layout_marginLeft="@dimen/margen"
-        android:layout_marginBottom="@dimen/margen"
+        android:layout_marginBottom="@dimen/mas_margen_para_boton"
         android:background="@drawable/fondo">
 
         <TextView
