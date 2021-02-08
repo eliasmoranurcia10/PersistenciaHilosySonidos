@@ -1,6 +1,7 @@
 package com.example.apphilospersistenciasonidos;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -12,9 +13,13 @@ public class Gestion extends Activity {
 
     private Handler temporizador;
 
+    private int botes;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        botes = 0;
 
         Bundle extras = getIntent().getExtras();
 
@@ -47,7 +52,7 @@ public class Gestion extends Activity {
         int x = (int) evento.getX();
         int y = (int) evento.getY();
 
-        partida.toque(x,y);
+        if(partida.toque(x,y)) botes++;
 
         return false;
     }
@@ -55,6 +60,10 @@ public class Gestion extends Activity {
     public void fin(){
 
         temporizador.removeCallbacks(elhilo);
+
+        Intent in = new Intent();
+        in.putExtra("PUNTUACION", botes);
+        setResult(RESULT_OK,in);
 
         finish(); // destruye actividad actual
     }
